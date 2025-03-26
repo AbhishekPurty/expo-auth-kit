@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, StyleSheet } from 'react-native';
+import MyButton from '../components/navigation/MyButton';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -48,13 +49,12 @@ export default function Login() {
         </View>
       </View>
 
-      {/* Login Button */}
-      <TouchableOpacity
-        style={[styles.button, { backgroundColor: isFormFilled ? 'blue' : 'grey' }]}
-        disabled={!isFormFilled}
-      >
-        <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity>
+      {/* Login Button using MyButton component */}
+      <MyButton
+        title="Login"
+        color={isFormFilled ? 'blue' : 'grey'}
+        onPress={() => console.log('Login pressed')}
+      />
     </View>
   );
 }
@@ -95,22 +95,10 @@ const styles = StyleSheet.create({
     left: 12,
     fontSize: 12,
     color: 'purple',
-    backgroundColor: 'white',
     paddingHorizontal: 2,
   },
   input: {
     fontSize: 16,
     paddingVertical: 6,
-  },
-  button: {
-    marginTop: 20,
-    paddingVertical: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  buttonText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: 'white',
   },
 });
